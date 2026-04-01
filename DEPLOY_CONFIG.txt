@@ -1,0 +1,74 @@
+# 🚀 AI Content Distributor - 部署配置
+# 生成时间: 2026-04-01 19:25
+
+## 🔐 GitHub 配置
+- 仓库: https://github.com/69wh58m9pq-ai/ai-content-distributor
+- 需要: Personal Access Token (repo权限)
+
+## 🌐 Vercel 环境变量
+复制以下内容到Vercel项目设置 → Environment Variables:
+
+### 1. 认证相关
+NEXTAUTH_SECRET=Y0Yk5hKRgQQeOUq5Xq1Lw0SF361MWD9B0eGeDxh5Rgo=
+NEXTAUTH_URL=https://ai-content-distributor.vercel.app
+
+### 2. 数据库 (部署后配置)
+# 使用Vercel Postgres:
+# 1. Vercel Dashboard → Storage → Postgres
+# 2. 创建数据库
+# 3. 复制连接字符串到 DATABASE_URL
+DATABASE_URL=postgresql://自动生成
+
+### 3. OpenAI API
+OPENAI_API_KEY=YOUR_OPENAI_API_KEY
+OPENAI_BASE_URL=https://poloai.top/v1
+
+### 4. Stripe测试模式
+STRIPE_SECRET_KEY=YOUR_STRIPE_TEST_SECRET_KEY
+STRIPE_WEBHOOK_SECRET=whsec_test
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=YOUR_STRIPE_TEST_PUBLISHABLE_KEY
+
+## 📋 部署步骤
+
+### 第1步: GitHub推送 (需要Token)
+```bash
+# 使用Token推送 (替换 YOUR_TOKEN)
+cd /Users/joker/.openclaw/workspace/ai-content-distributor
+git push https://69wh58m9pq-ai:YOUR_TOKEN@github.com/69wh58m9pq-ai/ai-content-distributor.git main
+```
+
+### 第2步: Vercel部署
+1. 访问: https://vercel.com/new
+2. 登录/注册Vercel账户
+3. 导入仓库: `69wh58m9pq-ai/ai-content-distributor`
+4. 点击: Deploy
+
+### 第3步: 配置环境变量
+1. Vercel Dashboard → 项目设置
+2. Environment Variables
+3. 添加上方8个变量
+4. 重新部署
+
+### 第4步: 数据库设置
+1. Vercel Dashboard → Storage → Postgres
+2. 创建数据库
+3. 更新DATABASE_URL环境变量
+4. 重新部署
+
+## 🎯 测试信息
+- 应用URL: https://ai-content-distributor.vercel.app
+- 测试卡号: 4242 4242 4242 4242
+- 测试邮箱: 任意邮箱注册
+- 免费次数: 10次/用户
+
+## 📞 故障排除
+1. 构建失败: 检查环境变量是否完整
+2. 数据库错误: 验证DATABASE_URL格式
+3. 支付失败: 使用测试卡号 4242 4242 4242 4242
+4. 认证错误: 检查NEXTAUTH_SECRET和NEXTAUTH_URL
+
+## 💰 收入配置 (后续)
+1. 注册Stripe: https://dashboard.stripe.com/register
+2. 获取生产API密钥
+3. 更新Vercel环境变量
+4. 配置银行账户提现

@@ -1,0 +1,114 @@
+# 🚀 Vercel环境变量配置
+# 在Vercel项目设置 → Environment Variables中添加以下变量
+
+# ========================
+# 1. 认证相关 (必需)
+# ========================
+
+# 生成命令: openssl rand -base64 32
+NEXTAUTH_SECRET=你的随机密钥_例如:kZVYUbsCXmKcXLZW3VNIsuTTljoRtQKtf3GmGwdMmkA=
+
+# 你的生产域名 (部署后更新)
+NEXTAUTH_URL=https://你的项目名.vercel.app
+
+# ========================
+# 2. 数据库 (必需)
+# ========================
+
+# 选项A: 使用Vercel Postgres (推荐)
+# 1. 在Vercel Dashboard → Storage → Postgres 创建数据库
+# 2. 获取连接字符串，填入下方
+DATABASE_URL=postgresql://自动生成的连接字符串
+
+# 选项B: 使用外部PostgreSQL (如Neon, Supabase)
+# DATABASE_URL=postgresql://用户名:密码@主机:端口/数据库名
+
+# ========================
+# 3. OpenAI API (必需)
+# ========================
+
+# 你的GPT-5 API密钥
+OPENAI_API_KEY=YOUR_OPENAI_API_KEY
+
+# OpenAI API基础URL
+OPENAI_BASE_URL=https://poloai.top/v1
+
+# ========================
+# 4. Stripe支付 (测试模式)
+# ========================
+
+# Stripe测试密钥 (先测试，后换生产)
+STRIPE_SECRET_KEY=YOUR_STRIPE_TEST_SECRET_KEY
+STRIPE_WEBHOOK_SECRET=whsec_test
+NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=YOUR_STRIPE_TEST_PUBLISHABLE_KEY
+
+# ========================
+# 可选: 生产模式配置
+# ========================
+
+# Stripe生产密钥 (从Stripe Dashboard获取)
+# STRIPE_SECRET_KEY=STRIPE_SECRET_KEY_PLACEHOLDER
+# STRIPE_WEBHOOK_SECRET=whsec_xxxxxxxxxxxxxxxx
+# NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=STRIPE_PUBLISHABLE_KEY_PLACEHOLDER
+
+# ========================
+# 环境变量说明
+# ========================
+
+# 1. NEXTAUTH_SECRET:
+#    - 用于加密会话cookie
+#    - 生成命令: openssl rand -base64 32
+#    - 必须保持机密，不要分享
+
+# 2. DATABASE_URL:
+#    - PostgreSQL连接字符串
+#    - 格式: postgresql://用户名:密码@主机:端口/数据库名
+#    - Vercel Postgres会自动提供
+
+# 3. OPENAI_API_KEY:
+#    - 用于GPT-5内容生成
+#    - 当前使用的是测试密钥，生产环境建议使用自己的密钥
+
+# 4. Stripe密钥:
+#    - 测试模式: 使用提供的测试密钥
+#    - 生产模式: 从Stripe Dashboard获取生产密钥
+#    - 测试卡号: 4242 4242 4242 4242
+
+# ========================
+# 部署后检查清单
+# ========================
+
+# 1. 访问应用: https://你的项目名.vercel.app
+# 2. 测试用户注册: /auth/signup
+# 3. 测试用户登录: /auth/signin
+# 4. 测试内容生成: 免费10次限制
+# 5. 测试支付流程: /pricing → 使用测试卡号
+
+# ========================
+# 故障排除
+# ========================
+
+# 1. 数据库连接失败:
+#    - 检查DATABASE_URL格式
+#    - 验证网络连接
+#    - 检查防火墙设置
+
+# 2. 认证失败:
+#    - 检查NEXTAUTH_SECRET和NEXTAUTH_URL
+#    - 验证数据库用户表
+
+# 3. Stripe支付失败:
+#    - 检查API密钥是否正确
+#    - 验证Webhook配置
+#    - 测试模式 vs 生产模式
+
+# ========================
+# 支持资源
+# ========================
+
+# 1. Vercel文档: https://vercel.com/docs
+# 2. NextAuth文档: https://next-auth.js.org
+# 3. Stripe文档: https://stripe.com/docs
+# 4. Prisma文档: https://www.prisma.io/docs
+
+# 🎉 祝你部署成功！
