@@ -1,15 +1,12 @@
-// 重要: Stripe密钥必须通过环境变量 STRIPE_SECRET_KEY 提供
-// 生产环境: 在Vercel/Railway设置环境变量
-// 开发环境: 在 .env.local 中设置import Stripe from 'stripe'
+import Stripe from 'stripe'
 
-// 创建Stripe客户端
-// 注意：在生产环境中，这些密钥应该从环境变量读取
-// 目前使用测试密钥，后续需要替换为您的正式密钥
+// 重要: Stripe 密钥必须通过环境变量 STRIPE_SECRET_KEY 提供
+// - 生产环境: 在 Railway/Vercel 等平台配置 STRIPE_SECRET_KEY
+// - 开发环境: 在 .env.local 设置 STRIPE_SECRET_KEY
 
-// GitHub安全扫描说明：这是Stripe官方公开的测试密钥，不是真实生产密钥
-// 生产环境将通过环境变量 STRIPE_SECRET_KEY 提供真实密钥
+// 创建 Stripe 客户端（构建期会被 Tree-shaking，但确保导入有效）
 export const stripe = new Stripe(
-  process.env.STRIPE_SECRET_KEY || '', // Stripe官方测试密钥（公开）
+  process.env.STRIPE_SECRET_KEY || '',
   {
     apiVersion: '2023-10-16',
     appInfo: {
