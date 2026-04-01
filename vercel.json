@@ -1,22 +1,8 @@
 {
-  "buildCommand": "prisma generate && next build",
-  "devCommand": "next dev",
+  "buildCommand": "npm run build",
+  "devCommand": "npm run dev",
   "installCommand": "npm install",
   "framework": "nextjs",
   "outputDirectory": ".next",
-  "env": {
-    "DATABASE_URL": "postgresql://user:password@host:port/database",
-    "NEXTAUTH_SECRET": "your-secret-key-here",
-    "NEXTAUTH_URL": "https://your-domain.vercel.app",
-    "OPENAI_API_KEY": "your-openai-api-key",
-    "OPENAI_BASE_URL": "https://api.openai.com/v1",
-    "STRIPE_SECRET_KEY": "your-stripe-secret-key",
-    "STRIPE_WEBHOOK_SECRET": "your-stripe-webhook-secret"
-  },
-  "regions": ["sin1"],
-  "git": {
-    "deploymentEnabled": {
-      "main": true
-    }
-  }
+  "regions": ["sin1"]
 }
