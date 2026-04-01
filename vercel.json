@@ -5,34 +5,13 @@
   "framework": "nextjs",
   "outputDirectory": ".next",
   "env": {
-    "DATABASE_URL": {
-      "description": "Database connection string for production",
-      "value": "postgresql://user:password@host:port/database"
-    },
-    "NEXTAUTH_SECRET": {
-      "description": "Secret for NextAuth.js encryption",
-      "value": "your-secret-key-here"
-    },
-    "NEXTAUTH_URL": {
-      "description": "The canonical URL of your site",
-      "value": "https://your-domain.vercel.app"
-    },
-    "OPENAI_API_KEY": {
-      "description": "OpenAI API Key for GPT-5",
-      "value": "your-openai-api-key"
-    },
-    "OPENAI_BASE_URL": {
-      "description": "OpenAI API Base URL",
-      "value": "https://api.openai.com/v1"
-    },
-    "STRIPE_SECRET_KEY": {
-      "description": "Stripe Secret Key for payments",
-      "value": "your-stripe-secret-key"
-    },
-    "STRIPE_WEBHOOK_SECRET": {
-      "description": "Stripe Webhook Secret for payment events",
-      "value": "your-stripe-webhook-secret"
-    }
+    "DATABASE_URL": "postgresql://user:password@host:port/database",
+    "NEXTAUTH_SECRET": "your-secret-key-here",
+    "NEXTAUTH_URL": "https://your-domain.vercel.app",
+    "OPENAI_API_KEY": "your-openai-api-key",
+    "OPENAI_BASE_URL": "https://api.openai.com/v1",
+    "STRIPE_SECRET_KEY": "your-stripe-secret-key",
+    "STRIPE_WEBHOOK_SECRET": "your-stripe-webhook-secret"
   },
   "regions": ["sin1"],
   "git": {
