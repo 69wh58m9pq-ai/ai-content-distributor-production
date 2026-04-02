@@ -5,13 +5,7 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true,
   },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  // 禁用全局错误页面构建
-  experimental: {
-    missingSuspenseWithCSRBailout: false,
-  },
+  // 完全移除eslint配置以避免警告
 };
 
 export default nextConfig;

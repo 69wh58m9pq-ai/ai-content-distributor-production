@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>纯HTML测试 - AI Content Distributor</title>
+    <style>
+        body { font-family: sans-serif; padding: 40px; }
+        .success { color: green; font-weight: bold; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <h1>✅ 纯HTML测试页面</h1>
+    <p>如果能看到这个页面，说明Web服务器正常工作。</p>
+    
+    <div id="status">
+        <p>检查JavaScript...</p>
+    </div>
+    
+    <div>
+        <h3>测试链接:</h3>
+        <ul>
+            <li><a href="/">主应用页面</a></li>
+            <li><a href="/simple">简化React页面</a></li>
+            <li><a href="/test">测试页面</a></li>
+            <li><a href="http://localhost:3001">备用端口3001</a></li>
+        </ul>
+    </div>
+    
+    <script>
+        // 检查JavaScript是否执行
+        document.getElementById('status').innerHTML = 
+            '<p class="success">✅ JavaScript已执行</p>';
+        
+        // 测试API连接
+        fetch('/api/auth/session')
+            .then(response => {
+                document.getElementById('status').innerHTML += 
+                    `<p class="success">✅ API连接正常 (状态码: ${response.status})</p>`;
+            })
+            .catch(error => {
+                document.getElementById('status').innerHTML += 
+                    `<p class="error">❌ API连接失败: ${error.message}</p>`;
+            });
+    </script>
+</body>
+</html>

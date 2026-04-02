@@ -6,8 +6,8 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
-  url      = "file:./dev.db"
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
 }
 
 model User {
@@ -15,38 +15,40 @@ model User {
   email         String    @unique
   name          String?
   password      String?
+  tier          String    @default("free") // free, basic, pro
+  credits       Int       @default(10) // 免费用户10次，付费用户无限
   emailVerified DateTime?
   image         String?
-  tier          String    @default("free")
-  credits       Int       @default(10)
   createdAt     DateTime  @default(now())
   updatedAt     DateTime  @updatedAt
-  
-  usages        Usage[]
-  payments      Payment[]
+
+  usage    Usage[]
+  payments Payment[]
 }
 
 model Usage {
   id        String   @id @default(cuid())
   userId    String
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  platform  String   // twitter, linkedin, blog
   content   String
-  platform  String
   tokens    Int
-  cost      Float
   createdAt DateTime @default(now())
+
+  @@index([userId])
 }
 
 model Payment {
-  id          String   @id @default(cuid())
-  userId      String
-  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  stripeId    String   @unique
-  amount      Int
-  currency    String   @default("usd")
-  status      String
-  tier        String
-  period      String
-  createdAt   DateTime @default(now())
-  updatedAt   DateTime @updatedAt
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  stripeId  String   @unique
+  amount    Int      // 单位：分
+  currency  String   @default("usd")
+  status    String   // pending, succeeded, failed
+  tier      String   // basic, pro
+  period    String   @default("monthly") // monthly, yearly
+  createdAt DateTime @default(now())
+
+  @@index([userId])
 }
